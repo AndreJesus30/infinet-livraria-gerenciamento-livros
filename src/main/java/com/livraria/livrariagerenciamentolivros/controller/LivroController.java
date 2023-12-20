@@ -44,7 +44,9 @@ public class LivroController {
             LOGGER.info("GET BY ID: "+ livro);
             return ResponseEntity.ok(livro);
         }catch (LivroNotFoundException ex){
-            ResponsePayload notFound = ResponsePayload.builder().message("Not Found").dateTime(LocalDateTime.now()).build();
+            ResponsePayload notFound = new ResponsePayload();
+            notFound.setMessage("Not Found");
+            notFound.setDateTime(LocalDateTime.now());
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(notFound);
         }
 
